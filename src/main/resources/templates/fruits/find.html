@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="bg-warning text-white px-4 mb-4">Fruits inventory</h1>
+  <div class="container">
+    <h2 th:text="${title}"></h2>
+    <p th:text="${msg}"></p>
+    <div class="alert alert-warning">
+    <form method="post" action="/fruits/find" class="row">
+      <div class="col me-0 pe-0">
+        <input type="text" class="form-control me-1" name="find" th:value="${find}">
+      </div>
+      <div class="col-2 ms-0 ps-0">
+        <input type="submit" class="btn btn-warning ms-0 w-100" value="検索">
+      </div>
+    </form>
+    </div>
+    <table class="table mt-4">
+      <thead><tr>
+        <th>ID</th><th>Name</th><th>Price</th><th>Stock</th>
+      </tr></thead>
+      <tbody>
+      <tr th:each="item:${data}">
+        <td th:text="*{item.id}"></td>
+        <td th:text="*{item.name}"></td>
+        <td th:text="*{item.price}"></td>
+        <td th:text="*{item.stock}"></td>
+       </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
