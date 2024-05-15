@@ -94,25 +94,4 @@ public class SampleController {
 		repository.delete(fruit);
 		return "redirect:/fruits";
 	}
-	
-	@GetMapping("/fruits/find")
-	public ModelAndView find(ModelAndView mv) {
-	  mv.setViewName("/fruits/find");
-	  mv.addObject("title", "検索");
-	  mv.addObject("msg", "フルーツ在庫を検索します。");
-	  mv.addObject("find","");
-	  return mv;
-	}
-	 
-	@PostMapping("/fruits/find")
-	public ModelAndView find(ModelAndView mv,
-	    @RequestParam("find") String find) {
-	  List<Fruit> list = repository.findByName(find); // ☆
-	  mv.setViewName("/fruits/find");
-	  mv.addObject("title", "検索");
-	  mv.addObject("msg", "フルーツ在庫を検索します。");
-	  mv.addObject("find",find);
-	  mv.addObject("data", list);
-	  return mv;
-	}        
 }
